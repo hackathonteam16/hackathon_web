@@ -8,6 +8,14 @@ class Shop(models.Model):
     def __str__(self):
         return self.shop_name
 
+
+class Tag(models.Model):
+    name = models.CharField(max_length=200, null=True)
+
+    def __str__(self):
+        return self.name
+
+
 class Product(models.Model):
     CATEGORY = (
         ('בגדים לגבר', 'בגדים לגבר'),
@@ -28,8 +36,29 @@ class Product(models.Model):
     category = models.CharField(max_length=200, null=True, choices=CATEGORY)
     description = models.CharField(max_length=200, null=True)
     size = models.CharField(max_length=200, null=True, choices=SIZE)
+    tags = models.ManyToManyField(Tag)
+
+    def __str__(self):
+        return self.name
+
 
 class Customer(models.Model):
     name = models.CharField(max_length=200, null=True)
     phone = models.CharField(max_length=200, null=True)
     email = models.CharField(max_length=200, null=True)
+
+
+class Order(models.Model):
+    STATUS = (
+        ('Pending', 'Pending'),
+        ('Out for delivery', 'Out for delivery'),
+        ('Delivered', 'Delivered'),
+    )
+    customer = models.ForeignKey(Customer,null=True, on_delete= models.SET_NULL)    #one to many relationship
+    product = models.ForeignKey(Product,null=True, on_delete= models.SET_NULL)
+    date_created = models.DateTimeField(auto_now_add=True, null=True)
+    status = models.CharField(max_length=200, null=True, choices=STATUS)
+
+    def __str__(self):
+        return self.product.name
+
