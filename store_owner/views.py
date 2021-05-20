@@ -36,7 +36,10 @@ def status(request):
     total_orders = orders.count()
     delivered = orders.filter(status='הגיע אל הלקוח').count()
     pending = orders.filter(status='בטיפול').count()
-    return  render(request, 'store_owner/status.html')
+    context = {'orders': orders, 'customers': customers, 'total_customers': total_customers,
+               'total_orders': total_orders, 'delivered': delivered, 'pending': pending}
+
+    return  render(request, 'store_owner/status.html', context)
 
 def new_shop(request):
     return  render(request, 'store_owner/new_shop.html')
