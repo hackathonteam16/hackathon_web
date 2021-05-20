@@ -30,9 +30,10 @@ def my_products(request):
     total_orders = orders.count()
     delivered = orders.filter(status='Delivered').count()
     pending = orders.filter(status='Pending').count()
-    context = {'orders': orders, 'customers': customers, 'total_customers': total_customers,
-               'total_orders': total_orders, 'delivered': delivered, 'pending': pending}
     products = Product.objects.all()
+    context = {'orders': orders, 'customers': customers, 'total_customers': total_customers,
+               'total_orders': total_orders, 'delivered': delivered, 'pending': pending,'products' : products}
+
     return render(request, 'store_owner/my_products.html', context)
 
 

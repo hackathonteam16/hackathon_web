@@ -1,8 +1,7 @@
 {%  extends 'store_owner/main.html' %}
 {% block content %}
 <br>
-
-		<div class="row">
+		<div class="row" dir = "rtl">
 			<div class="col-md">
 				<div class="card card-body">
 					<h5>המוצרים שלי</h5>
@@ -19,12 +18,13 @@
                         {% for i in products  %}
 {#                            #add a new table row in each iteration#}
                             <tr>
-                                <td>{{i.name}} </td>
+
+                                <td>{{i.description}} </td>
                                 <td>{{i.price}} </td>
                                 <td>{{i.category}} </td>
-                                <td>{{i.description}} </td>
-                                     <td><a href="">update</a></td>
-                                     <td><a href="">delete</a></td>
+                                <td>{{i.name}} </td>
+                                    <td><a href="">עדכון מוצר</a></td>
+                                    <td><a href="">מחיקת מוצר</a></td>
 
                             </tr>
                         {% endfor %}
