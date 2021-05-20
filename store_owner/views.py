@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
 from .models import *
 from .forms import OrderForm
-#from .filters import OrderFilter
+#from .filters import OrderFilter.
 
 def registerPage(request):
     form = UserCreationForm()
