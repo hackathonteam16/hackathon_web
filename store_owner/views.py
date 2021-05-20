@@ -24,21 +24,18 @@ def update_product(request):
     return  render(request, 'store_owner/update_product.html',{'products' : products})
 
 def my_products(request):
+    products = Product.objects.all()
+    context = {'products' : products}
+
+    return render(request, 'store_owner/my_products.html', context)
+
+def status(request):
     orders = Order.objects.all()
     customers = Customer.objects.all()
     total_customers = customers.count()
     total_orders = orders.count()
-    delivered = orders.filter(status='Delivered').count()
-    pending = orders.filter(status='Pending').count()
-    products = Product.objects.all()
-    context = {'orders': orders, 'customers': customers, 'total_customers': total_customers,
-               'total_orders': total_orders, 'delivered': delivered, 'pending': pending,'products' : products}
-
-    return render(request, 'store_owner/my_products.html', context)
-
-
-
-def status(request):
+    delivered = orders.filter(status='הגיע אל הלקוח').count()
+    pending = orders.filter(status='בטיפול').count()
     return  render(request, 'store_owner/status.html')
 
 def new_shop(request):
