@@ -26,8 +26,9 @@ def update_product(request):
 def my_products(request):
     products = Product.objects.all()
     context = {'products' : products}
-
     return render(request, 'store_owner/my_products.html', context)
+
+
 
 def status(request):
     orders = Order.objects.all()
@@ -53,8 +54,6 @@ def customers(request):
     return render(request, 'store_owner/customers.html',context)
 
 def createProduct(request):
-    #OrderFormSet = inlineformset_factory(Product, fields= ('product', 'status'))
-    #customer = Customer.objects.get()
     form = OrderForm()
     if request.method == 'POST' :
         form = OrderForm(request.POST)
@@ -63,3 +62,22 @@ def createProduct(request):
              return redirect('/dashboard')
     context = {'form':form}
     return render(request, 'store_owner/product_form.html', context)
+
+def updateProduct(request,pk):
+    product = Product.objects.get(id = pk)
+    form = OrderForm(instance=product)
+    if request.method == 'POST' :
+         form = OrderForm(request.POST, instance= product)
+         if form.is_valid():
+             form.save()
+             return redirect('/my_products')
+    context = {'form': form}
+    return render(request, 'store_owner/product_form.html', context)
+
+def deleteProduct(request, pk):
+    product = Product.objects.get(id=pk)
+    if request.method == "POST":
+        product.delete()
+        return redirect('/my_products')
+    context = {'item':product}
+    return render(request, 'store_owner/delete.html', context)
