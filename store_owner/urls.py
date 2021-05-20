@@ -6,7 +6,7 @@ urlpatterns = [
     path('', mall_views.home),
     path('dashboard/', views.dashboard, name = 'dashboard'),
     path('new_product/', views.createProduct, name = 'new_product'),
-    path('update_product/<str:pk>/', views.updateProduct, name = 'update_product'),
+    path('update_product/', views.updateProduct, name = 'update_product'),
     path('my_products/', views.my_products, name = 'my_product'),
     path('status/', views.status, name = 'status'),
     path('new_shop/', views.new_shop, name = 'new_shop'),
