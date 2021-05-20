@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render ,redirect
 from django.http  import HttpResponse
 from django.forms import inlineformset_factory
 from django.contrib.auth.forms import UserCreationForm
@@ -52,16 +52,14 @@ def customers(request):
     context = {'customer':customer,'orders':orders,'order_count':order_count}
     return render(request, 'store_owner/customers.html',context)
 
-def createProduct(request, pk):
-    OrderFormSet = inlineformset_factory(Customer, Order, fields= ('product', 'status'), extra = 10)
-    customer = Customer.objects.get(id = pk)
-    formset = OrderFormSet(instance=customer)
+def createProduct(request):
+    #OrderFormSet = inlineformset_factory(Product, fields= ('product', 'status'))
+    #customer = Customer.objects.get()
+    form = OrderForm()
     if request.method == 'POST' :
-        #print('Printing POST:', request.POST)
-        #form = OrderForm(request.POST)
-        formset = OrderFormSet(request.POST, instance=customer)
-        if formset.is_valid():
-            formset.save()
-            # return redirect('/')
-    context = {'formset':formset}
-    return render(request, 'store_owner/new_product.html', context)
+        form = OrderForm(request.POST)
+        if form.is_valid():
+             form.save()
+             return redirect('/dashboard')
+    context = {'form':form}
+    return render(request, 'store_owner/product_form.html', context)
