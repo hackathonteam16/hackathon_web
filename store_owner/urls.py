@@ -3,7 +3,7 @@ from . import views
 from mall import views as mall_views
 
 urlpatterns = [
-    path('', mall_views.home),
+    path('', mall_views.home,name = 'mall'),
     path('dashboard/', views.dashboard, name = 'dashboard'),
     path('new_product/', views.createProduct, name = 'new_product'),
     path('update_product/<str:pk>/', views.updateProduct, name = 'update_product'),
