@@ -28,3 +28,8 @@ class Product(models.Model):
     category = models.CharField(max_length=200, null=True, choices=CATEGORY)
     description = models.CharField(max_length=200, null=True)
     size = models.CharField(max_length=200, null=True, choices=SIZE)
+
+class Customer(models.Model):
+    name = models.CharField(max_length=200, null=True)
+    phone = models.CharField(max_length=200, null=True)
+    email = models.CharField(max_length=200, null=True)
