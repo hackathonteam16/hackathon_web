@@ -25,3 +25,6 @@ def my_products(request):
 
 def status(request):
     return  render(request, 'store_owner/status.html')
+
+def new_shop(request):
+    return  render(request, 'store_owner/new_shop.html')
