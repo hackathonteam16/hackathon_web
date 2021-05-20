@@ -1,7 +1,16 @@
 from django.shortcuts import render
 from django.http  import HttpResponse
+from django.forms import inlinefomset_factory
+from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
+from .models import *
+from .forms import OrderForm
+from .filters import OrderFilter
+
+def registerPage(request):
+    form = UserCreationForm()
+    context = {'form': form}
 def home(request):
     return  render(request, 'store_owner/dashboard.html')
 
