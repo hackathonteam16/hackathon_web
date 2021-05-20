@@ -50,9 +50,9 @@ class Customer(models.Model):
 
 class Order(models.Model):
     STATUS = (
-        ('Pending', 'Pending'),
-        ('Out for delivery', 'Out for delivery'),
-        ('Delivered', 'Delivered'),
+        ('בטיפול', 'בטיפול'),
+        ('בדרך ללקוח', 'בדרך ללקוח'),
+        ('הגיע אל הלקוח', 'הגיע אל הלקוח'),
     )
     customer = models.ForeignKey(Customer,null=True, on_delete= models.SET_NULL)    #one to many relationship
     product = models.ForeignKey(Product,null=True, on_delete= models.SET_NULL)
