@@ -13,3 +13,6 @@ def update_product(request):
 
 def my_products(request):
     return  render(request, 'store_owner/my_products.html')
+
+def status(request):
+    return  render(request, 'store_owner/status.html')
