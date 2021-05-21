@@ -9,9 +9,10 @@ urlpatterns = [
     path('update_product/<str:pk>/', views.updateProduct, name = 'update_product'),
     path('my_products/', views.my_products, name = 'my_product'),
     path('status/', views.status, name = 'status'),
-    path('new_shop/', views.new_shop, name = 'new_shop'),
+    path('new_shop/', views.createShop, name = 'new_shop'),
     path('customers/', views.customers, name = 'customers'),
     path('delete_order/<str:pk>', views.deleteProduct, name='delete_product'),
+    path('shop_owner/', views.shop_owner, name='shop_owner'),
     #path('create_product/', views.createProduct, name = 'create_product'),
 
 ]

@@ -2,10 +2,11 @@ from django.shortcuts import render ,redirect
 from django.http  import HttpResponse
 from django.forms import inlineformset_factory
 from django.contrib.auth.forms import UserCreationForm
+from .filters import ProductFilter
 
 # Create your views here.
 from .models import *
-from .forms import OrderForm
+from .forms import *
 #from .filters import OrderFilter.
 
 def registerPage(request):
@@ -28,7 +29,8 @@ def my_products(request):
     context = {'products' : products}
     return render(request, 'store_owner/my_products.html', context)
 
-
+def shop_owner(request):
+    return  render(request, 'store_owner/shop_owner.html')
 
 def status(request):
     orders = Order.objects.all()
@@ -44,7 +46,8 @@ def status(request):
 
 
 def new_shop(request):
-    return  render(request, 'store_owner/new_shop.html')
+    shop = Product.objects.all()
+    return  render(request, 'store_owner/new_shop.html',{'shop' : shop})
 
 def customers(request):
     customer = Customer.objects.get()
@@ -52,6 +55,16 @@ def customers(request):
     order_count = orders.count()
     context = {'customer':customer,'orders':orders,'order_count':order_count}
     return render(request, 'store_owner/customers.html',context)
+
+def createShop(request):
+    form = ShopForm()
+    if request.method == 'POST' :
+        form = ShopForm(request.POST)
+        if form.is_valid():
+             form.save()
+             return redirect('/dashboard')
+    context = {'form':form}
+    return render(request, 'store_owner/product_form.html', context)
 
 def createProduct(request):
     form = OrderForm()

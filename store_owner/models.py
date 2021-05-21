@@ -1,12 +1,12 @@
 from django.db import models
 
 
-class Shop(models.Model):
-    shop_name = models.CharField(max_length=200, null=True)
-    description= models.CharField(max_length=200, null=True)
-
-    def __str__(self):
-        return self.shop_name
+# class Shop(models.Model):
+#     shop_name = models.CharField(max_length=200, null=True)
+#     description= models.CharField(max_length=200, null=True)
+#
+#     def __str__(self):
+#         return self.shop_name
 
 
 class Tag(models.Model):
@@ -14,6 +14,22 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.name
+
+class Shop(models.Model):
+    CATEGORY = (
+        ('בגדים', 'בגדים'),
+        ('הנעלה', 'הנעלה'),
+        ('אקססוריז', 'אקססוריז'),
+        ('מוצרי חשמל', 'מוצרי חשמל'),
+    )
+    name = models.CharField(max_length=200, null=True)
+    category = models.CharField(max_length=200, null=True, choices=CATEGORY)
+    #customer = models.ForeignKey(Customer, null=True, on_delete=models.SET_NULL)  # one to many relationship
+    #product = models.ForeignKey(Product, null=True, on_delete=models.SET_NULL)
+
+    def __str__(self):
+        return self.name
+
 
 
 class Product(models.Model):
@@ -36,10 +52,15 @@ class Product(models.Model):
     category = models.CharField(max_length=200, null=True, choices=CATEGORY)
     description = models.CharField(max_length=200, null=True)
     size = models.CharField(max_length=200, null=True, choices=SIZE)
+    picture = models.ImageField(null=True, blank=True)
     tags = models.ManyToManyField(Tag)
+    #customer = models.ForeignKey(Customer, null=True, on_delete=models.SET_NULL)  # one to many relationship
+    #shop = models.ForeignKey(Shop, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.name
+
+
 
 
 class Customer(models.Model):

@@ -1,0 +1,31 @@
+{%  extends 'store_owner/main.html' %}
+{% block content %}
+<br>
+		<div class="row" dir = "rtl">
+			<div class="col-md">
+				<div class="card card-body">
+					<h5>החנויות</h5>
+				</div>
+				<div class="card card-body">
+					<table class="table">
+						<tr>
+                            <th>שם חנות</th>
+                            <th>קטגוריה</th>
+						</tr>
+
+                        {% for i in shop  %}
+{#                            #add a new table row in each iteration#}
+                            <tr>
+                                <td><a href="{% url 'store_products'%}">{{i.name}}</a> </td>
+                                <td>{{i.category}} </td>
+                            </tr>
+                        {% endfor %}
+
+					</table>
+				</div>
+			</div>
+
+		</div>
+
+{% endblock %}
+
