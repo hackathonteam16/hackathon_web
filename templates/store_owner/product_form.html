@@ -2,31 +2,18 @@
 {% load static %}
 {% block content %}
 
-    <form action="" method="POST">
-    {% csrf_token %}
-    {{ form }}
 
-    <input type="submit" name ="Submit">
 
-    </form>
-
-{% comment %}<div class="row">
+<div class="row">
     <div class="col-md-6">
         <div class="card card-body">
-
-
-            <form action ="" method="POST">
+                <form action="" method="POST">
                 {% csrf_token %}
-                {{  formset.managment_form }}
-                {% for form in formset %}
-                    {{ form }}
-                    <hr>
-                {% endfor %}
-                <input type="submit" name="Submit">
-            </form>
-
+                {{ form }}
+                <input class="input-submit" type="submit" name ="Submit">
+                </form>
         </div>
     </div>
-</div>{% endcomment %}
+</div>
 
 {% endblock %}

@@ -3,10 +3,11 @@
 {% block content %}
 
 <br>
+<div dir="rtl">
+<a class="new-shop-btn dash-btn" href="{% url 'new_shop' %}"><span class="inner">יצירת חנות חדשה</span></a>
+<a class="old-shop-btn dash-btn" href="{% url 'dashboard' %}"><span class="inner">כניסה לחנות קיימת</span></a>
+</div>
 
-<a class="btn btn-primary  btn-sm btn-block" href="{% url 'new_shop' %}">יצירת חנות חדשה</a>
-{#<a class="btn btn-primary  btn-sm btn-block" href="{% url 'update_product' %}">עדכון מוצר</a>#}
-<a class="btn btn-primary  btn-sm btn-block" href="{% url 'dashboard' %}">כניסה לחנות קיימת</a>
 
 
 
