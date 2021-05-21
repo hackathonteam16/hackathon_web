@@ -3,11 +3,13 @@
 {% block content %}
 
 <br>
-
-<a class="btn btn-primary  btn-sm btn-block" href="{% url 'new_product' %}">מוצר חדש</a>
+<div dir="rtl">
+    <a class="new-product-btn dash-btn" href="{% url 'new_product' %}"><span class="inner">מוצר חדש</span></a>
 {#<a class="btn btn-primary  btn-sm btn-block" href="{% url 'update_product' %}">עדכון מוצר</a>#}
-<a class="btn btn-primary  btn-sm btn-block" href="{% url 'my_product' %}">המוצרים שלי</a>
-<a class="btn btn-primary  btn-sm btn-block" href="{% url 'status' %}">לקוחות והזמנות</a>
+<a class="my-product-btn dash-btn" href="{% url 'my_product' %}"><span class="inner">המוצרים שלי</span></a>
+<a class="customers-btn dash-btn" href="{% url 'status' %}"><span class="inner">לקוחות והזמנות</span></a>
+
+</div>
 
 {#<div class="row">#}
 {#	<div class="col-md-5">#}

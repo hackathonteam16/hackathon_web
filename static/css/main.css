@@ -1,14 +1,63 @@
-
-input{
-    border: 1px solid #BEBEBE;
-}
-.input-form-elem{
-    text-align: right;
-    display: block;
-}
-.span-elem{
+.dash-btn{
+    display: inline-block;
+    position: relative;
+    width: 200px;
+    height: 200px;
 }
 
-.desc-form-elem{
+.new-product-btn{
+  background-color: #e8ffff;
+    position: relative;
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10%;
+    color: #213e3b;
+    left: 30%;
+}
 
+.my-product-btn{
+  background-color: #a6f6f1;
+    position: relative;
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10%;
+    color: #213e3b;
+    left: 20%;
+}
+
+
+.customers-btn{
+      background-color: #41aea9;
+    position: relative;
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10%;
+    color: #213e3b;
+    left: 10%;
+    top: 38px;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+.inner{
+    position: relative;
+    top: 35%;
+    font-size: 150%;
 }
